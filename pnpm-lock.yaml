@@ -7,6 +7,13 @@ settings:
 importers:
 
   .:
+    dependencies:
+      htm:
+        specifier: 3.1.1
+        version: 3.1.1
+      preact:
+        specifier: 10.25.4
+        version: 10.25.4
     devDependencies:
       prettier:
         specifier: ^3.4.2
@@ -14,11 +21,21 @@ importers:
 
 packages:
 
+  htm@3.1.1:
+    resolution: {integrity: sha512-983Vyg8NwUE7JkZ6NmOqpCZ+sh1bKv2iYTlUkzlWmA5JD2acKoxd4KVxbMmxX/85mtfdnDmTFoNKcg5DGAvxNQ==}
+
+  preact@10.25.4:
+    resolution: {integrity: sha512-jLdZDb+Q+odkHJ+MpW/9U5cODzqnB+fy2EiHSZES7ldV5LK7yjlVzTp7R8Xy6W6y75kfK8iWYtFVH7lvjwrCMA==}
+
   prettier@3.4.2:
     resolution: {integrity: sha512-e9MewbtFo+Fevyuxn/4rrcDAaq0IYxPGLvObpQjiZBMAzB9IGmzlnG9RZy3FFas+eBMu2vA0CszMeduow5dIuQ==}
     engines: {node: '>=14'}
     hasBin: true
 
 snapshots:
+
+  htm@3.1.1: {}
+
+  preact@10.25.4: {}
 
   prettier@3.4.2: {}
