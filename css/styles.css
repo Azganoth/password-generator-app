@@ -265,9 +265,11 @@ svg {
 
   .status {
     display: flex;
+    align-items: center;
     gap: 1rem;
 
     .text {
+      line-height: 1;
       text-transform: uppercase;
     }
 
@@ -308,7 +310,7 @@ svg {
 @media (min-width: 768px) {
   .strength-meter {
     margin-bottom: 2rem;
-    padding: 1.125rem 2rem;
+    padding: 1.375rem 2rem;
   }
 
   .button {
