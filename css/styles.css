@@ -398,6 +398,7 @@ form {
   width: 100%;
 
   > output {
+    color: var(--color-green);
     justify-self: end;
   }
 
