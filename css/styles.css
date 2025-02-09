@@ -16,6 +16,18 @@
   src: url(../assets/fonts/JetBrainsMono-BoldItalic.ttf) format("truetype");
 }
 
+/* vars */
+:root {
+  --color-black: #18171f;
+  --color-white: #e6e6ea;
+  --color-gray: #817d92;
+  --color-darkgray: #24232c;
+  --color-green: #a4ffaf;
+  --color-red: #f64a4a;
+  --color-orange: #fb7c58;
+  --color-yellow: #f8cd65;
+}
+
 /* base */
 
 html {
@@ -26,8 +38,469 @@ html {
 *:before,
 *:after {
   box-sizing: inherit;
+  border: none;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-  margin: 0;
+  font-size: 1rem;
+  font-weight: bold;
+  font-family: "JetBrains Mono", monospace;
+  background: var(--color-black);
+  color: var(--color-white);
+}
+
+button {
+  background: none;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+
+  &:disabled {
+    cursor: not-allowed;
+  }
+}
+
+input {
+  font: inherit;
+}
+
+svg {
+  display: block;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+@media (min-width: 768px) {
+  body {
+    font-size: 1.125rem;
+  }
+}
+
+/* typography */
+
+.heading {
+  font-size: 1.5rem;
+}
+
+.subheading {
+  font-size: 1.125rem;
+}
+
+.heading,
+.subheading {
+  font-weight: bold;
+}
+
+@media (min-width: 768px) {
+  .heading {
+    font-size: 2rem;
+  }
+
+  .subheading {
+    font-size: 1.5rem;
+  }
+}
+
+/* components */
+
+.button {
+  width: 100%;
+  padding: 1.125rem;
+  background: var(--color-green);
+  border: 0.125rem solid transparent;
+  color: var(--color-black);
+  text-transform: uppercase;
+
+  @media (prefers-reduced-motion: no-preference) {
+    transition: scale 0.25s ease-out;
+
+    &:active:not(:disabled) {
+      scale: 0.95;
+    }
+  }
+
+  &:hover:not(:disabled) {
+    @media (hover: hover) {
+      color: var(--color-green);
+      background-color: transparent;
+      border-color: var(--color-green);
+    }
+  }
+
+  &:disabled {
+    opacity: 0.25;
+  }
+}
+
+.checkbox {
+  appearance: none;
+  -webkit-appearance: none;
+  display: grid;
+  place-items: center;
+  border: 0.125rem solid var(--color-white);
+  width: 1.25rem;
+  height: 1.25rem;
+  color: currentColor;
+  cursor: pointer;
+
+  @media (prefers-reduced-motion: no-preference) {
+    transition: scale 0.25s ease-out;
+
+    &:active:not(:disabled) {
+      scale: 0.9;
+    }
+  }
+
+  &:hover {
+    @media (hover: hover) {
+      border-color: var(--color-green);
+    }
+  }
+
+  &::before {
+    content: "";
+    width: 1rem;
+    height: 1rem;
+    background: url(./assets/images/icon-check.svg) no-repeat center;
+    scale: 0;
+
+    @media (prefers-reduced-motion: no-preference) {
+      transition: scale 0.25s ease-out;
+    }
+  }
+
+  &:checked {
+    background: var(--color-green);
+    border-color: transparent;
+
+    &::before {
+      scale: 1;
+    }
+  }
+}
+
+.slider {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 1.75rem;
+  width: 100%;
+  background: none;
+  cursor: pointer;
+
+  &::-webkit-slider-runnable-track {
+    height: 0.5rem;
+    background: var(--color-black);
+    background-image: linear-gradient(var(--color-green), var(--color-green));
+    background-size: var(--value-percentage) 100%;
+    background-repeat: no-repeat;
+  }
+
+  &::-moz-range-track {
+    height: 0.5rem;
+    background: var(--color-black);
+  }
+
+  &::-moz-range-progress {
+    height: 0.5rem;
+    background: var(--color-green);
+  }
+
+  &::-ms-track {
+    height: 0.5rem;
+    background: transparent;
+    border-color: transparent;
+    color: transparent;
+  }
+
+  &::-ms-fill-lower {
+    background: var(--color-green);
+  }
+
+  &::-ms-fill-upper {
+    background: var(--color-black);
+  }
+
+  &::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    margin-top: -11px;
+    width: 1.75rem;
+    height: 1.75rem;
+    border: 0.125rem solid transparent;
+    border-radius: 999px;
+    background: var(--color-white);
+  }
+
+  &::-webkit-slider-thumb:hover {
+    @media (hover: hover) {
+      background-color: var(--color-black);
+      border-color: var(--color-green);
+    }
+  }
+
+  &::-moz-range-thumb {
+    width: 1.75rem;
+    height: 1.75rem;
+    border: 0.125rem solid transparent;
+    border-radius: 999px;
+    background: var(--color-white);
+  }
+
+  &::-moz-range-thumb:hover {
+    @media (hover: hover) {
+      background-color: var(--color-black);
+      border-color: var(--color-green);
+    }
+  }
+
+  &::-ms-thumb {
+    margin-top: 1px;
+    width: 1.75rem;
+    height: 1.75rem;
+    border: 0.125rem solid transparent;
+    border-radius: 999px;
+    background: var(--color-white);
+    cursor: pointer;
+  }
+
+  &::-ms-thumb:hover {
+    @media (hover: hover) {
+      background-color: var(--color-black);
+      border-color: var(--color-green);
+    }
+  }
+}
+
+.strength-meter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  padding: 0.875rem 1rem;
+  background: var(--color-black);
+
+  .label {
+    color: var(--color-gray);
+    text-transform: uppercase;
+  }
+
+  .status {
+    display: flex;
+    gap: 1rem;
+
+    .text {
+      text-transform: uppercase;
+    }
+
+    .bars {
+      display: flex;
+      gap: 0.5rem;
+
+      .bar {
+        width: 0.625rem;
+        height: 1.75rem;
+        border: 0.125rem solid var(--color-white);
+
+        &.filled {
+          background-color: currentColor;
+          border-color: currentColor;
+        }
+      }
+
+      &.tooweak {
+        color: var(--color-red);
+      }
+
+      &.weak {
+        color: var(--color-orange);
+      }
+
+      &.medium {
+        color: var(--color-yellow);
+      }
+
+      &.strong {
+        color: var(--color-green);
+      }
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  .strength-meter {
+    margin-bottom: 2rem;
+    padding: 1.25rem 2rem;
+  }
+
+  .button {
+    padding: 1.25rem;
+  }
+}
+
+/* app */
+
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: auto;
+  min-height: 100dvh;
+  max-width: min(33.75rem, calc(100% - 2rem));
+}
+
+.title {
+  margin-bottom: 1rem;
+  color: var(--color-gray);
+  text-align: center;
+}
+
+.password-display {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  background: var(--color-darkgray);
+
+  .password {
+    flex: 1;
+
+    &.placeholder {
+      opacity: 0.25;
+    }
+  }
+
+  .status {
+    color: var(--color-green);
+    text-transform: uppercase;
+  }
+
+  > button {
+    color: var(--color-green);
+
+    @media (prefers-reduced-motion: no-preference) {
+      transition: scale 0.25s ease-out;
+
+      &:active:not(:disabled) {
+        scale: 0.9;
+      }
+    }
+
+    &:hover:not(:disabled) {
+      @media (hover: hover) {
+        color: var(--color-white);
+      }
+    }
+
+    &:disabled svg {
+      opacity: 0.25;
+    }
+
+    svg {
+      width: 1.25rem;
+      height: 1.25rem;
+    }
+  }
+}
+
+form {
+  padding: 1rem;
+  background: var(--color-darkgray);
+}
+
+.password-length {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+  width: 100%;
+
+  > output {
+    justify-self: end;
+  }
+
+  > .slider {
+    grid-column: 1 / -1;
+  }
+}
+
+.password-includes {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  border: none;
+  margin-bottom: 2rem;
+}
+
+.password-include {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  cursor: pointer;
+}
+
+.password-generate {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+
+  svg {
+    width: 0.75rem;
+    height: 0.75rem;
+  }
+}
+
+.error {
+  margin-top: 1rem;
+  color: var(--color-red);
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .title {
+    margin-bottom: 2rem;
+  }
+
+  .password-display {
+    margin-bottom: 1.5rem;
+    padding: 1.25rem 2rem;
+
+    > button {
+      svg {
+        width: 1.5rem;
+        height: 1.5rem;
+      }
+    }
+  }
+
+  form {
+    padding: 1.5rem 2rem 2rem;
+  }
+
+  .password-length {
+    gap: 1rem;
+  }
+
+  .password-includes {
+    gap: 1.25rem;
+  }
+
+  .password-include {
+    gap: 1.5rem;
+  }
+
+  .password-generate {
+    gap: 1.5rem;
+  }
 }
