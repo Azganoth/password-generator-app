@@ -25,6 +25,8 @@ const strengthClass = {
  */
 export function StrengthMeter({ password }) {
   const strength = useMemo(() => {
+    if (!password) return -1;
+
     let score = 0;
     if (password.length >= 10) score++;
     if (/[A-Z]/.test(password)) score++;
@@ -50,9 +52,12 @@ export function StrengthMeter({ password }) {
         aria-live="assertive"
         aria-atomic="true"
       >
-        <span key=${announcementKey} class="subheading text">
-          ${strengthLabels[strength]}
-        </span>
+        ${strength >= 0 &&
+        html`
+          <span key=${announcementKey} class="subheading text">
+            ${strengthLabels[strength]}
+          </span>
+        `}
         <div class="bars ${strengthClass[strength]}">
           ${Array.from(
             { length: 4 },

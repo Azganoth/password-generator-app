@@ -25,10 +25,8 @@ export const Slider = (props) => {
    */
   const inputRef = useRef();
 
-  // Add filled bar for Chromium-based browsers
+  // Add filled bar
   useEffect(() => {
-    if (!window.chrome) return;
-
     const input = inputRef.current;
     if (!input) return;
 
@@ -40,7 +38,7 @@ export const Slider = (props) => {
       const max = parseIntWithDefault(input.max, 100);
       const value = parseIntWithDefault(input.value, 50);
       input.style.setProperty(
-        "--value-percentage",
+        "--progress",
         `${((value - min) / (max - min)) * 100}%`,
       );
     }
