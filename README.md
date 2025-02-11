@@ -9,6 +9,7 @@ This is a solution to the [Password Generator App challenge on Frontend Mentor](
   - [Stack](#stack)
   - [Tools and Workflow](#tools-and-workflow)
 - [Showcase](#showcase)
+  - [Links](#links)
   - [Screenshots](#screenshots)
 - [Author](#author)
 
@@ -37,6 +38,11 @@ Users should be able to:
 - **Prettier**
 
 ## <a name="showcase">Showcase 🖼️</a>
+
+### Links
+
+- Solution URL: [Mobile-first solution using Preact](https://www.frontendmentor.io/solutions/mobile-first-solution-using-preact-17XDUQk_Mq)
+- Live Site URL: [Password Generator App](https://azganoth.github.io/password-generator-app/)
 
 ### Screenshots
 
